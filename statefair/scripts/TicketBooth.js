@@ -1,3 +1,4 @@
+// debugger
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
 
@@ -20,7 +21,6 @@ eventHub.addEventListener("click", event => {
                 ticketPurchased: "ride"
             }
         })
-        console.log("something")
         eventHub.dispatchEvent(rideButton)
     }
     if (event.target.value === "foodTicket") {
@@ -29,7 +29,6 @@ eventHub.addEventListener("click", event => {
                 ticketPurchased: "food"
             }
         })
-        console.log("something2")
         eventHub.dispatchEvent(foodButton)
     }
     if (event.target.value === "gameTicket") {
@@ -38,7 +37,6 @@ eventHub.addEventListener("click", event => {
                 ticketPurchased: "game"
             }
         })
-        console.log("something3")
         eventHub.dispatchEvent(gameButton)
     }
     if (event.target.value === "sideshowTicket") {
@@ -47,7 +45,6 @@ eventHub.addEventListener("click", event => {
                 ticketPurchased: "show"
             }
         })
-        console.log("something4")
         eventHub.dispatchEvent(showButton)
     }
     if (event.target.value === "allTicket") {
@@ -56,7 +53,6 @@ eventHub.addEventListener("click", event => {
                 ticketPurchased: "all"
             }
         })
-        console.log("something5")
         eventHub.dispatchEvent(allButton)
     }
 })
@@ -69,11 +65,33 @@ export const allTicketHolders = () => {
     eventHub.addEventListener("allTicketBought", event => {
         if ("ticketPurchased" in event.detail) {
             for (let i = 0; i < allTarget.length; i++){
-                console.log("i hate this")
                 allTarget[i].innerHTML += `
                         <div class="person bigSpender"></div>
                         `
-                console.log("help")
+                
             }}
                 
-    })}
+})}
+
+const customerTarget = document.querySelector(".customers")
+
+let increaseMe = 0
+export const InitialRenderCount = () => {
+    customerTarget.innerHTML = `Total Tickets Purchased: ${increaseMe}`
+}
+
+
+const customerCount = () => {
+    increaseMe++
+    console.log(increaseMe)
+    customerTarget.innerHTML = `Total Tickets Purchased: ${increaseMe}`
+}
+
+
+
+
+eventHub.addEventListener("allTicketBought", customerCount)
+eventHub.addEventListener("showTicketBought", customerCount)
+eventHub.addEventListener("gameTicketBought", customerCount)
+eventHub.addEventListener("foodTicketBought", customerCount)
+eventHub.addEventListener("rideTicketBought", customerCount)
