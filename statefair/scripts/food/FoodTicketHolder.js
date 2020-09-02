@@ -1,15 +1,14 @@
-const contentTarget = document.querySelector(".rides")
+const contentTarget = document.querySelector(".food")
 const eventHub = document.querySelector("#state-fair")
 
 
-export const RideTicketHolders = () => {
-    eventHub.addEventListener("rideTicketBought", event => {
+export const FoodTicketHolders = () => {
+    eventHub.addEventListener("foodTicketBought", event => {
         if ("ticketPurchased" in event.detail) {
             console.log("bleh")
             contentTarget.innerHTML += `
-                <div class= "person rider"></div>
+                <div class= "person eater"></div>
             `
         }
     })
 }
-
