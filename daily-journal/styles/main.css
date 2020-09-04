@@ -1,0 +1,14 @@
+fieldset {
+    display:flex;
+    flex-direction: column;
+}
+
+#entryLog {
+    display:flex;
+    flex-direction: column;
+}
+
+.journalEntry {
+    display: flex;
+    flex-direction: column;
+}
